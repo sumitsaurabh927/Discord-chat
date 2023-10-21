@@ -1,18 +1,14 @@
 import { useState } from 'react'
-import './App.css'
 import axios from 'axios'
-
+import hero from './assets/hero1.png'
+import './App.css'
 const App = () => {
 
   const [chatMsg, setChatMsg] = useState('')
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
-    // await fetch('http://localhost:5001/api/v1/sendChat',{
-    //   method:POST, 
-    // })
-    await axios.post('http://localhost:5001/api/v1/sendChat', { chatMsg })
-    // console.log(res)
+    await axios.post('https://discord-backend-fqzn.onrender.com/api/v1/sendChat', { chatMsg })
   }
 
   const onChangeHandler = (e) => {
@@ -20,12 +16,28 @@ const App = () => {
 
   }
   return (
-    <>
-      <form onSubmit={onSubmitHandler}>
-        <input value={chatMsg} onChange={onChangeHandler} />
-        <button >Send</button>
-      </form>
-    </>
+    <div className="container">
+      <div className="image-container">
+        <img src={hero} className="image" alt="Hero" />
+      </div>
+      <div className="form-container">
+        <form onSubmit={onSubmitHandler}>
+          <h1>Send a Discord notification!</h1>
+          <div>
+            <p>Use Novu to send notifications directly to a channel</p>
+            <p>in a Discord Server.</p>
+            <p>Get started <a href="https://docs.novu.co/channels-and-providers/chat/discord">here!</a></p>
+          </div>
+          <input
+            value={chatMsg}
+            onChange={onChangeHandler}
+            className="input-field"
+            placeholder="Enter notification text"
+          />
+          <button className="button">Send</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
