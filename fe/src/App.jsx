@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import hero from './assets/hero1.png'
+import hero from './assets/hero.png'
 import './App.css'
 const App = () => {
 
