@@ -9,6 +9,7 @@ const App = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     await axios.post('https://discord-backend-fqzn.onrender.com/api/v1/sendChat', { chatMsg })
+    setChatMsg('')
   }
 
   const onChangeHandler = (e) => {
